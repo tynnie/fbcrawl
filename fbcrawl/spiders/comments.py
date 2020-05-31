@@ -59,7 +59,8 @@ class CommentsSpider(FacebookSpider):
 
                 #returns full post-link in a list
                 post = post.xpath(".//a[contains(@href,'footer')]/@href").extract() 
-                temp_post = response.urljoin(post[0])
+                print(post)
+                temp_post = response.urljoin(post)
                 self.count -= 1
                 yield scrapy.Request(temp_post, 
                                      self.parse_post, 
